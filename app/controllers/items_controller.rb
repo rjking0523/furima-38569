@@ -21,13 +21,11 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :content, :category_id, :status_id, :delivery_charge_id, :delivery_area_id, :delivery_day_id, :price, :image).merge(user_id: current_user.id)  
+    params.require(:item).permit(:name, :content, :category_id, :status_id, :delivery_charge_id, :delivery_area_id,
+                                 :delivery_day_id, :price, :image).merge(user_id: current_user.id)
   end
 
   def move_to_registration
-    unless user_signed_in?
-      redirect_to new_user_registration_path
-    end
+    redirect_to new_user_registration_path unless user_signed_in?
   end
-
 end
