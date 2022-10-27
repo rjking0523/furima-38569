@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_registration, only: [:new]
+  before_action :authenticate_user!, only: [:new]
 
   def index
   end
@@ -24,7 +24,4 @@ class ItemsController < ApplicationController
                                  :delivery_day_id, :price, :image).merge(user_id: current_user.id)
   end
 
-  def move_to_registration
-    redirect_to new_user_session_path unless user_signed_in?
-  end
 end
