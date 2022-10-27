@@ -2,7 +2,6 @@ class ItemsController < ApplicationController
   before_action :move_to_registration, only: [:new]
 
   def index
-    @item = Item.includes(:user)
   end
 
   def new
